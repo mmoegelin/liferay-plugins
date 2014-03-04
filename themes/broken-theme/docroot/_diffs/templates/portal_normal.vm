@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 #parse ($init)
 
 <html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
@@ -36,7 +38,7 @@ $theme.include($body_top_include)
 		</div>
 
 		#if ($has_navigation || $is_signed_in)
-			#include ("$full_templates_path/navigation.vm")
+			#parse ("$full_templates_path/navigation.vm")
 		#end
 	</header>
 
@@ -60,9 +62,13 @@ $theme.include($body_top_include)
 		#end
 	</section>
 
+	<div class="yui3-skin-sam">
+	  <div id="modalPopup"></div>
+	</div>
+
 	<footer class="site-footer" id="footer" role="contentinfo">
 		<p class="powered-by">
-			#language ("powered-by") <a href="http://www.liferay.com" rel="external">Liferay</a>
+			#language ("powered-by") <a href="#" rel="external" onClick="showPopup();">Liferay</a>
 		</p>
 	</footer>
 </div>
@@ -72,5 +78,28 @@ $theme.include($body_bottom_include)
 $theme.include($bottom_include)
 
 </body>
+
+<script>
+	function showPopup() {
+		YUI().use(
+			'aui-modal',
+			function(Y) {
+				var modal = new Y.Modal(
+					{
+						bodyContent: '<iframe class="popup-iFrame" src="http://www.liferay.com"></iframe>',
+						centered: true,
+						draggable: true,
+						headerContent: '<h3>Liferay</h3>',
+						height: 600,
+						modal: true,
+						render: '#modalPopup',
+						resizable: true,
+						width: 600
+					}
+				).render();
+			}
+		);
+	}
+</script>
 
 </html>

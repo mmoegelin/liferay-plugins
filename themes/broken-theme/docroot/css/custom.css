@@ -1,4 +1,4 @@
-@import "compass/css3";
+@import "compass";
 @import "compass/typography/text/ellipsis";
 @import "mixins";
 
@@ -572,13 +572,13 @@ $dockbarOpenGradientStart: #0EA6F9;
 		float: none;
 	}
 
-	.portlet-journal-content .lfr-icon-actions {
-		margin-bottom: 3px;
-	}
-
 	.popup-iFrame {
 		height: 100%;
 		width: 100%;
+	}
+
+	.portlet-journal-content .lfr-icon-actions {
+		margin-bottom: 3px;
 	}
 
 	/* ---------- Extras ---------- */
